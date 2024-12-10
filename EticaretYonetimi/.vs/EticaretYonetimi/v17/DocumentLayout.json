@@ -1,0 +1,97 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Fatih\\source\\repos\\desdwdq\\EticaretYonetimi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9EE5D11B-8218-4A89-B7EC-7BEB0F95CFFC}|EticaretYonetimi\\EticaretYonetimi.csproj|C:\\Users\\Fatih\\source\\repos\\desdwdq\\EticaretYonetimi\\eticaretyonetimi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9EE5D11B-8218-4A89-B7EC-7BEB0F95CFFC}|EticaretYonetimi\\EticaretYonetimi.csproj|solutionrelative:eticaretyonetimi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EE5D11B-8218-4A89-B7EC-7BEB0F95CFFC}|EticaretYonetimi\\EticaretYonetimi.csproj|c:\\users\\fatih\\source\\repos\\desdwdq\\eticaretyonetimi\\eticaretyonetimi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EE5D11B-8218-4A89-B7EC-7BEB0F95CFFC}|EticaretYonetimi\\EticaretYonetimi.csproj|solutionrelative:eticaretyonetimi\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EE5D11B-8218-4A89-B7EC-7BEB0F95CFFC}|EticaretYonetimi\\EticaretYonetimi.csproj|C:\\Users\\Fatih\\source\\repos\\desdwdq\\EticaretYonetimi\\eticaretyonetimi\\islem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EE5D11B-8218-4A89-B7EC-7BEB0F95CFFC}|EticaretYonetimi\\EticaretYonetimi.csproj|solutionrelative:eticaretyonetimi\\islem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 374,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Fatih\\source\\repos\\desdwdq\\EticaretYonetimi\\EticaretYonetimi\\Form1.cs",
+              "RelativeDocumentMoniker": "EticaretYonetimi\\Form1.cs",
+              "ToolTip": "C:\\Users\\Fatih\\source\\repos\\desdwdq\\EticaretYonetimi\\EticaretYonetimi\\Form1.cs",
+              "RelativeToolTip": "EticaretYonetimi\\Form1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE0AAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T09:43:48.782Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Fatih\\source\\repos\\desdwdq\\EticaretYonetimi\\EticaretYonetimi\\Form1.cs",
+              "RelativeDocumentMoniker": "EticaretYonetimi\\Form1.cs",
+              "ToolTip": "C:\\Users\\Fatih\\source\\repos\\desdwdq\\EticaretYonetimi\\EticaretYonetimi\\Form1.cs [Design]",
+              "RelativeToolTip": "EticaretYonetimi\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T09:06:15.648Z",
+              "IsPinned": true,
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "islem.cs",
+              "DocumentMoniker": "C:\\Users\\Fatih\\source\\repos\\desdwdq\\EticaretYonetimi\\EticaretYonetimi\\islem.cs",
+              "RelativeDocumentMoniker": "EticaretYonetimi\\islem.cs",
+              "ToolTip": "C:\\Users\\Fatih\\source\\repos\\desdwdq\\EticaretYonetimi\\EticaretYonetimi\\islem.cs",
+              "RelativeToolTip": "EticaretYonetimi\\islem.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAYwCQAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T14:19:02.726Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 26,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
