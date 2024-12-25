@@ -8,12 +8,13 @@ namespace EticaretYonetimi
 {
     public class ListBoxItem
     {
-        public string DisplayName { get; set; }
+        public string DisplayName { get; set; }//title
         public string ProductID { get; set; }
+        public string ProductName { get; set; }//marka
 
         public override string ToString()
         {
-            return DisplayName;
+            return ProductName + " " + DisplayName; 
         }
     }
 

@@ -15,46 +15,49 @@ namespace EticaretYonetimi
 
         public islem()
         {
-            // Initialize Firestore
+            //firebase projeye ekleme
             string path = "C:\\Users\\Fatih\\Desktop\\csharpkey\\kentmedikalkey.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
             firestoreDb = FirestoreDb.Create("kentmedikal-3f5d2");
         }
 
-        public async Task veriekleme(string isim, string image, string discount, string original, string tag, bool indirim,string adet)
+        public async Task veriEkleme(string isim, string image, string indirimli, string original, string tag, bool indirim,string adet,string markaadi)
         {
             try
             {
-                // Define the collection
+                //koleksiyona eriştik
                 CollectionReference productsCollection = firestoreDb.Collection("products");
 
-                // Create a document object with fields
+                //göndereceğimiz veriler 
                 var product = new
                 {
                     title = isim,
                     imageUrl = image,
-                    discountPrice = discount,
+                    discountPrice = indirimli,
                     originalPrice = original,
                     tag = tag,
                     flash = indirim,
-                    quantity = adet
+                    quantity = adet,    
+                    brand = markaadi
                 };
 
-                // Add the document to Firestore
+                //veri ekledik    
                 await productsCollection.AddAsync(product);
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
-                Console.WriteLine($"Error adding data to Firestore: {ex.Message}");
+                MessageBox.Show($"Ekleme sırasında hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        public async Task<List<Dictionary<string, object>>> verilistele()
+        
+        public async Task<List<Dictionary<string, object>>> veriListele()
         {
             try
             {
+                //koleksiyona eriştik
                 CollectionReference productsCollection = firestoreDb.Collection("products");
 
+                //verileri aldık
                 QuerySnapshot snapshot = await productsCollection.GetSnapshotAsync();
                 List<Dictionary<string, object>> productList = new List<Dictionary<string, object>>();
 
@@ -62,113 +65,99 @@ namespace EticaretYonetimi
                 {
                     if (document.Exists)
                     {
-                        // Firestore'dan dönen verileri Dictionary'ye çevir
+                        //dönüşü
                         Dictionary<string, object> productData = document.ToDictionary();
-
-                        // Kimlik olarak Firestore'daki document ID'yi ekleyin
-                        productData["ID"] = document.Id; // Document ID'yi ekleyin
-
-                        // Listeye ekleyin
+                        productData["ID"] = document.Id; 
                         productList.Add(productData);
                     }
                 }
 
-                // Listeyi sınıf seviyesinde tanımlanan `products` alanına kopyala
                 products = productList;
 
-                Console.WriteLine("Data successfully retrieved from Firestore!");
+                
                 return productList;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error retrieving data from Firestore: {ex.Message}");
+                MessageBox.Show($"Veritabanı bağlantısı sağlanamadı!: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
 
-        public async Task<Dictionary<string, object>> GetProductDetailsByID(string documentID)
+        public async Task<Dictionary<string, object>> urunDetaylariniAl(string documentID)
         {
             try
             {
-                var productsCollection = firestoreDb.Collection("products");
+                CollectionReference productsCollection = firestoreDb.Collection("products");     //ref         
+                DocumentReference documentRef = productsCollection.Document(documentID); //verilen ID ye göre dokumanı çek
+                DocumentSnapshot documentSnapshot = await documentRef.GetSnapshotAsync(); // dokuman verilerini al
 
-                // Belge kimliğine göre bir referans al
-                DocumentReference documentRef = productsCollection.Document(documentID);
-
-                // Belgeyi çek
-                DocumentSnapshot documentSnapshot = await documentRef.GetSnapshotAsync();
-
-                if (documentSnapshot.Exists)
+                if (documentSnapshot.Exists)//kontrol
                 {
-                    Console.WriteLine("Ürün başarıyla bulundu.");
                     return documentSnapshot.ToDictionary();
                 }
 
-                Console.WriteLine("Ürün bulunamadı.");
+               
                 return null;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Hata: {ex.Message}");
+                MessageBox.Show($"Detay alma sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
-        public async Task<bool> UpdateProductByID(string documentID, string isim, string image, string discount, string original, string tag, bool indirim,string adet)
+        public async Task<bool> veriGuncelleme(string documentID, string isim, string image, string discount, string original, string tag, bool indirim,string adet,string markaname)
         {
             try
             {
-                var productsCollection = firestoreDb.Collection("products");
-
-                // Güncellenmesi gereken belgeye referans oluştur
+                CollectionReference productsCollection = firestoreDb.Collection("products");
                 DocumentReference documentRef = productsCollection.Document(documentID);
 
-                // Güncelleme için yeni veri
+                // güncelleme için yeni veri
                 var updatedData = new Dictionary<string, object>
-        {
-            { "title", isim },
-            { "imageUrl", image },
-            { "discountPrice", discount },
-            { "originalPrice", original },
-            { "tag", tag },
-            { "flash", indirim },
-            {"quantity",adet }
-        };
+                    {
+                        { "title", isim },
+                        { "imageUrl", image },
+                        { "discountPrice", discount },
+                        { "originalPrice", original },
+                        { "tag", tag },
+                        { "flash", indirim },
+                        {"quantity",adet },
+                        {"brand" ,markaname}
+                    };
 
-                // Firestore'da belgeyi güncelle
+                //güncelle
                 await documentRef.UpdateAsync(updatedData);
-
-                Console.WriteLine("Ürün başarıyla güncellendi.");
                 return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Güncelleme sırasında hata oluştu: {ex.Message}");
+                MessageBox.Show($"Güncelleme sırasında hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public async Task<bool> DeleteProductByID(string documentID)
+        public async Task<bool> veriSilme(string documentID)
         {
             try
             {
-                var productsCollection = firestoreDb.Collection("products");
-
-                // Silinmesi gereken belgeye referans oluştur
+                CollectionReference productsCollection = firestoreDb.Collection("products");
+                
                 DocumentReference documentRef = productsCollection.Document(documentID);
 
-                // Belgeyi sil
+                //silme
                 await documentRef.DeleteAsync();
 
-                Console.WriteLine("Ürün başarıyla silindi.");
+                
                 return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Silme sırasında hata oluştu: {ex.Message}");
+                MessageBox.Show($"Silme sırasında hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
-        public async Task LoadImageIntoPictureBox(string imageUrl, PictureBox pictureBox)
+        public async Task gorselCekme(string imageUrl, PictureBox pictureBox)
         {
             try
             {
